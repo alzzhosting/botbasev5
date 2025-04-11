@@ -33,6 +33,13 @@
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+### 🌟 **Notice**
+```diff
++ SETTING OWNER A CONFIG - BOT.JS
++ BASE SIMPLE FOR USE PANEL / TERMUX
+- FITURE LITTLE
+```
+
 ## ┗┛ CARA INSTALL ┗┛
 
 ```bash
@@ -52,7 +59,7 @@ npm run dev
 
 botbasev5/
 ┃
-┣━━ config/             # Konfigurasi bot
+┣━━ config/             # Konfigurasi bot (owner) 
 ┣━━ index.js            # File utama (entry point)
 ┣━━ nodemon.json        # Konfigurasi auto reload
 ┣━━ package.json        # Info project & dependency
@@ -78,7 +85,7 @@ botbasev5/
 
 ┗ LISENSI
 
-〣 Belum ada lisensi resmi.
+〣 Sudah ada lisensi resmi.
 〣 Buat yang mau pakai atau tanya-tanya, kontak langsung owner-nya di GitHub.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
