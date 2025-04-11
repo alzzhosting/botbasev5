@@ -17,6 +17,13 @@
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+<div align="center">
+  
+[![Stars](https://img.shields.io/github/stars/alzzhosting/botbasev5?style=for-the-badge&color=63a4ff)](https://github.com/alzzhosting/botbasev5/stargazers)
+  [![Forks](https://img.shields.io/github/forks/alzzhosting/botbasev5?style=for-the-badge&color=63a4ff)](https://github.com/alzzhosting/botbasev5/network/members)
+
+</div>
+
 ## ┏┓ FITUR UTAMA ┏┓
 
 ┃〣 Struktur modular & clean  
