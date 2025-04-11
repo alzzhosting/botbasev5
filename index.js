@@ -1,6 +1,22 @@
+/**
+ *
+ * SCRIPR BASE CREATE BY KENZ
+ * ! NOT DELETE CREDIT,KALO RECODE BOLEH
+ *
+ * CREDIT :
+ * > KENZ [ DEVELOPER ]
+ * > RAZOR [ PENGEMBANG ]
+ * > NADZ [ IDE ]
+ *
+ * RECODE :
+ * > NAMA LU
+ * > NAMA LU
+ *
+ */
+
 import "./config/bot.js";
 
-import { makeWASocket, useMultiFileAuthState } from "@kenzdev/baileys-pro";
+import { makeWASocket, useMultiFileAuthState } from "baileys";
 import pino from "pino";
 import readline from "readline";
 import fs from "fs";

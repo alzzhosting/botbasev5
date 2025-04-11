@@ -1,3 +1,19 @@
+/**
+ *
+ * SCRIPR BASE CREATE BY KENZ
+ * ! NOT DELETE CREDIT,KALO RECODE BOLEH
+ *
+ * CREDIT :
+ * > KENZ [ DEVELOPER ]
+ * > RAZOR [ PENGEMBANG ]
+ * > NADZ [ IDE ]
+ *
+ * RECODE :
+ * > NAMA LU
+ * > NAMA LU
+ *
+ */
+
 import fs from "fs";
 
 const pkg = JSON.parse(fs.readFileSync("package.json"));
@@ -5,7 +21,7 @@ console.log(pkg);
 
 global.bot = {
     name: "BotBase Kenz V5",
-    number: "6288215523477",
+    number: "6285934686607",
     version: pkg["version"],
     prefix: ".",
     splitArgs: "|",
@@ -28,14 +44,12 @@ global.bot = {
 
 global.owner = {
     name: "Kenz Shop Digital",
-    number: "6288215523477",
+    number: "6288215523477"
 };
 
 global.db = {
-  user: [],
-  premium: [],
-  group: [],
-  save: async function(dbName) {
-    
-  }
-}
+    user: [],
+    premium: [],
+    group: [],
+    save: async function (dbName) {}
+};
