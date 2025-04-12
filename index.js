@@ -107,6 +107,7 @@ async function loginSystem() {
     if (usePairingCode && !bot.user && !bot.authState.creds.registered) {
         const jawaban = await question("Gunakan Pairing Code? [Y/n]: ");
         if (jawaban.toLowerCase() === "n") return start(false);
+        if (jawaban.toLowerCase() === "Y") return start(true);
         const waNumber = await question("Masukkan Nomor WhatsApp Anda: ");
         const code = await bot.requestPairingCode(waNumber.replace(/\D/g, ""));
         console.log(chalk.blue(`\nPAIRING CODE: ${code}\n`));
