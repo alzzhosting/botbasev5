@@ -18,21 +18,12 @@ import "./config/bot.js";
 
 import { makeWASocket, useMultiFileAuthState } from "baileys";
 import pino from "pino";
-import readline from "readline";
 import fs from "fs";
 
-function question(text = "question") {
-    return new Promise(resolve => {
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-        });
-        rl.question(`\x1b[33;1m?\x1b[0m\x20\x1b[1m${text}\x1b[0m`, answer => {
-            rl.close();
-            resolve(answer);
-        });
-    });
-}
+// UTILS
+import question from "./utils/question.js";
+
+import messagesUpsert from "./events/messages.upsert.js";
 
 (async function start(usePairingCode = true) {
     const sesi = await useMultiFileAuthState("session");
@@ -83,4 +74,6 @@ function question(text = "question") {
         console.log(connection);
     });
     bot.ev.on("creds.update", sesi.saveCreds);
+
+    bot.ev.on("messages.upsert", ({ messages }) => messagesUpsert(bot, messages[0]));
 })();

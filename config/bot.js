@@ -17,7 +17,6 @@
 import fs from "fs";
 
 const pkg = JSON.parse(fs.readFileSync("package.json"));
-console.log(pkg);
 
 global.bot = {
     name: "BotBase Kenz V5",
@@ -47,6 +46,11 @@ global.owner = {
     number: "6288215523477"
 };
 
+global.image = {
+    menu: "https://kenz.cloudx.biz.id/download/1744460856467.PNG",
+    reply: "https://kenz.cloudx.biz.id/download/1744460856467.PNG"
+};
+ 
 global.db = {
     user: [],
     premium: [],
