@@ -1,96 +1,99 @@
 <!--
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃   ____        _     _               _         ┃
-┃  |  _ \  ___ | |__ (_)_ __   __ _  | |__ ___   ┃
-┃  | | | |/ _ \| '_ \| | '_ \ / _` | | '_ ` _ \  ┃
-┃  | |_| | (_) | |_) | | | | | (_| | | | | | | | ┃
-┃  |____/ \___/|_.__/|_|_| |_|\__, | |_| |_| |_| ┃
-┃                          |___/                ┃
-┃        BOT BASE V5 - Node.js Boilerplate      ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+┃        BOTBASE V5 by alzzhosting       ┃
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -->
 
-# BOTBASE V5
+<h1 align="center">BOTBASE V5</h1>
+<p align="center"><i>Kerangka bot Node.js modular, ringan, dan siap pakai.</i></p>
 
-〣 **BotBase v5** adalah kerangka dasar bot Node.js yang ringan, modular, dan gampang banget dimodif.
-〣 Cocok buat lo yang mau bikin bot dari nol atau sekadar belajar ngoding bot dengan struktur rapi.
+<p align="center">
+  <img src="https://img.shields.io/github/stars/alzzhosting/botbasev5?style=social" alt="Stars" />
+  <img src="https://img.shields.io/github/forks/alzzhosting/botbasev5?style=social" alt="Forks" />
+  <img src="https://img.shields.io/github/license/alzzhosting/botbasev5" alt="License" />
+</p>
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+---
 
-<div align="center">
-  
-[![Stars](https://img.shields.io/github/stars/alzzhosting/botbasev5?style=for-the-badge&color=63a4ff)](https://github.com/alzzhosting/botbasev5/stargazers)
-  [![Forks](https://img.shields.io/github/forks/alzzhosting/botbasev5?style=for-the-badge&color=63a4ff)](https://github.com/alzzhosting/botbasev5/network/members)
+## ┏┓ FITUR UNGGULAN ┏┓
+- Struktur modular & clean
+- Auto reload dengan `nodemon`
+- Mudah dikembangkan & dipelajari
+- Konfigurasi gampang via `config/`
 
-</div>
+---
 
-## ┏┓ FITUR UTAMA ┏┓
-
-┃〣 Struktur modular & clean  
-┃〣 Support auto reload pake `nodemon`  
-┃〣 Gampang dikembangin dan dipelajari  
-┃〣 Konfigurasi lewat folder `config/`
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-### 🌟 **Notice**
-```diff
-+ SETTING OWNER A CONFIG - BOT.JS
-+ BASE SIMPLE FOR USE PANEL / TERMUX
-- FITURE LITTLE
-```
-
-## ┗┛ CARA INSTALL ┗┛
+## ┃ INSTALLASI ┃
 
 ```bash
 git clone https://github.com/alzzhosting/botbasev5.git
 cd botbasev5
 npm install
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┏┓ JALANKAN BOT ┏┓
+---
+
+┗┛ JALANKAN BOT ┗┛
 
 npm run dev
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┃ STRUKTUR FOLDER ┃
+---
+
+┏┓ STRUKTUR PROYEK ┏┓
 
 botbasev5/
-┃
-┣━━ config/             # Konfigurasi bot (owner) 
-┣━━ index.js            # File utama (entry point)
-┣━━ nodemon.json        # Konfigurasi auto reload
-┣━━ package.json        # Info project & dependency
-┗━━ README.md           # Dokumentasi project ini
+┣━ config/              # Konfigurasi bot
+┣━ database/            # Penyimpanan data JSON
+┣━ events/              # Handler event seperti message, group, dsb
+┣━ utils/               # Fungsi bantuan
+┣━ case.js              # Command list
+┣━ index.js             # Entry point utama
+┣━ nodemon.json         # Auto reload config
+┣━ bacadulusebelumrun.js# Info sebelum run
+┗━ package.json         # Info & dependencies
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┛ KONTRIBUSI
+---
 
-〣 Bebas banget buat kontribusi, tinggal:
+┗ KONTRIBUSI ┛
+
+Mau bantuin? Gampang bro:
 
 1. Fork repo ini
 
 
-2. Push perubahan lo
+2. Buat branch baru
 
 
-3. Bikin pull request
+3. Commit perubahan
+
+
+4. Pull request!
 
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-┗ LISENSI
+---
 
-〣 Sudah ada lisensi resmi.
-〣 Buat yang mau pakai atau tanya-tanya, kontak langsung owner-nya di GitHub.
+┃ LISENSI ┃
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Licensed under the MIT License
 
-〣 Repo asli: github.com/alzzhosting/botbasev5
+> Bebas dipake, dimodif, dan di-share. Jangan lupa kredit ya!
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+
+
+---
+
+┗ INFO REPO ┛
+
+Repo: alzzhosting/botbasev5
+
+Stars: 1
+
+Forks: 1
+
+
+---
