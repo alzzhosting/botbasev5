@@ -55,23 +55,33 @@ export default function cases(bot, m) {
     const isOwner = jidDecode(m.chatId).user === global.owner.number;
     const pushname = m.pushName || "Orang Asing 👽";
     console.log(m);
-    
-    
+
     try {
         switch (m.cmd) {
             case "menu":
                 {
-                    console.log("INI ADALAH SEBUAH PERINTAH");
-                    m.Reply(`*HAI KAK ${pushname} BERIKUT MENU BOT BASE*
+                    console.log("MENU BOT AKTIF");
 
-_MAAF KALO DIKIT SOALNYA BASE_
-*NAMA BOT : ${global.bot.name}*
-*VERSI BOT : ${global.bot.version}*
-
-*🔹 MENU BOT 🔹*
-> ${global.bot.prefix}privat
-> ${global.bot.prefix}public
-`);
+                    m.Reply(`╭───『 *BOT BASE MENU* 』
+│
+│  👋 Hai Kak *${pushname}*!
+│  Berikut adalah fitur dari bot ini:
+│
+│  ╭───「 ⚙ INFO BOT 」
+│  ├ Nama  : ${global.bot.name}
+│  ├ Versi : ${global.bot.version}
+│  ├ Mode  : ${bot.public ? "Public" : "Private"}
+│  ╰──────────────
+│
+│  ╭───「 📜 FITUR UMUM 」
+│  ├ ${global.bot.prefix}privat
+│  ├ ${global.bot.prefix}public
+│  ╰──────────────
+│
+│  _Gunakan prefix: *${global.bot.prefix}*_  
+│  _Contoh: *${global.bot.prefix}public*_
+│
+╰───『 KENZDEVELOPER 』`);
                 }
                 break;
             case "privat":
