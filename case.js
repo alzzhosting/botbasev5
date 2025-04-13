@@ -1,4 +1,17 @@
-import { jidDecode, proto } from "baileys";
+import {
+    jidDecode,
+    BufferJSON,
+    WA_DEFAULT_EPHEMERAL,
+    generateWAMessageFromContent,
+    getBinaryNodeChildren,
+    useMultiFileAuthState,
+    generateWAMessageContent,
+    downloadContentFromMessage,
+    generateWAMessage,
+    prepareWAMessageMedia,
+    areJidsSameUser,
+    getContentType
+} from "@whiskeysockets/baileys";
 import fs from "fs";
 
 export default function cases(bot, m) {
@@ -37,8 +50,13 @@ export default function cases(bot, m) {
     const isCreator = [global.owner.number + "@s.whatsapp.net"].includes(
         m.key.remoteJid
     );
+    const args = m.body.trim().split(/ +/).slice(1);
+    const text = args.join(" ");
+    const isOwner = jidDecode(m.chatId).user === global.owner.number;
     const pushname = m.pushName || "Orang Asing 👽";
     console.log(m);
+    
+    
     try {
         switch (m.cmd) {
             case "menu":
@@ -58,14 +76,14 @@ _MAAF KALO DIKIT SOALNYA BASE_
                 break;
             case "privat":
                 {
-                    if (!isCreator) return;
+                    if (!isOwner) return m.reply("Maff Anda Bukan Owner");
                     bot.public = false;
                     m.reply("Berhasil mengganti ke mode *privat*");
                 }
                 break;
             case "public":
                 {
-                    if (!isCreator) return;
+                    if (!isOwner) return;
                     bot.public = true;
                     m.reply("Berhasil mengganti ke mode *public*");
                 }

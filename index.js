@@ -1,5 +1,9 @@
 import "./config/bot.js";
-import { makeWASocket, useMultiFileAuthState } from "baileys";
+import {
+    makeWASocket,
+    useMultiFileAuthState,
+    
+} from "@whiskeysockets/baileys";
 import pino from "pino";
 import fs from "fs";
 import fetch from "node-fetch";
