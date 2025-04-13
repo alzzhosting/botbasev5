@@ -50,7 +50,11 @@ global.image = {
     menu: "https://kenz.cloudx.biz.id/download/1744460856467.PNG",
     reply: "https://kenz.cloudx.biz.id/download/1744460856467.PNG"
 };
- 
+
+global.mess = {
+  owner: "*< ! > MAAF ANDA BUKAN OWNER BOT*"
+}
+
 global.db = {
     user: [],
     premium: [],

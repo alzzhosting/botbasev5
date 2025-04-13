@@ -8,6 +8,7 @@ import {
 } from "@whiskeysockets/baileys";
 
 import cases from "../case.js";
+import fs from "fs";
 
 export default function messagesUpsert(bot, m) {
     m.id = m.key.id;
@@ -82,40 +83,36 @@ export default function messagesUpsert(bot, m) {
                         participant: "0@s.whatsapp.net"
                     },
                     message: {
-                        conversation: `💬 ${m.text}`
+                        conversation: `💬 CMD: ${m.text}`
                     }
                 }
             }
         );
-    m.Reply = text =>
+    m.Reply = async function (text) {
+        const thumbPath = "./media/thumbnail.png";
+        const thumbnail = fs.readFileSync(thumbPath);
+
         bot.sendMessage(
             m.chatId,
             {
-                text: text,
-                mentions: [m.sender],
-                contextInfo: {
-                    externalAdReply: {
-                        title: global.bot.name,
-                        body: `© 2025 ${global.owner.name}`,
-                        thumbnailUrl: global.image.reply,
-                        sourceUrl: "https://api.kenz.my.id"
-                    }
-                }
+                image: thumbnail,
+                caption: text
             },
             {
                 quoted: {
-                  key: {
+                    key: {
                         id: m.id,
                         fromMe: false,
                         remoteJid: "status@broadcast",
                         participant: "0@s.whatsapp.net"
                     },
                     message: {
-                        conversation: `🥶 BOT BASE BY KENZ 🥶`
+                        conversation: `🔥 BOT BASE V5 BY KENZDEV 🔥`
                     }
                 }
             }
         );
+    };
 
     return cases(bot, m);
 }

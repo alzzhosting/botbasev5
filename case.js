@@ -52,7 +52,7 @@ export default function cases(bot, m) {
     );
     const args = m.body.trim().split(/ +/).slice(1);
     const text = args.join(" ");
-    const isOwner = jidDecode(m.chatId).user === global.owner.number;
+    const isOwner = jidDecode(m.senderId).user === global.owner.number;
     const pushname = m.pushName || "Orang Asing 👽";
     console.log(m);
 
@@ -84,16 +84,24 @@ export default function cases(bot, m) {
 ╰───『 KENZDEVELOPER 』`);
                 }
                 break;
+            case "owner":
+                {
+                    const owner = global.owner.number;
+                    bot.sendMessage(m.chatId, {
+                        text: owner + "\nItu Nomor Owner Saya"
+                    });
+                }
+                break;
             case "privat":
                 {
-                    if (!isOwner) return m.reply("Maff Anda Bukan Owner");
+                    if (!isOwner) return m.reply(global.mess.owner);
                     bot.public = false;
                     m.reply("Berhasil mengganti ke mode *privat*");
                 }
                 break;
             case "public":
                 {
-                    if (!isOwner) return;
+                    if (!isOwner) return m.reply(global.mess.owner);
                     bot.public = true;
                     m.reply("Berhasil mengganti ke mode *public*");
                 }

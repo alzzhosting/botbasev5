@@ -10,30 +10,22 @@ import ora from "ora";
 import question from "./utils/question.js";
 import messagesUpsert from "./events/messages.upsert.js";
 
-const githubJsonUrl =
-    "https://raw.githubusercontent.com/alzzhosting/userlogin/refs/heads/main/userlogin.json";
+const githubJsonUrl = "https://raw.githubusercontent.com/alzzhosting/userlogin/refs/heads/main/userlogin.json";
 const userDbPath = "./database/user.json";
 
 async function generateUniqueCode(length = 8) {
     const chars = "0123456789ABCDEF";
-    return Array.from(
-        { length },
-        () => chars[Math.floor(Math.random() * chars.length)]
-    ).join("");
+    return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
 }
 
 async function showBanner() {
     console.clear();
     const banner = figlet.textSync("KENZDEV LOGIN", { font: "ANSI Shadow" });
-    console.log(gradient.pastel.multiline(banner));
-    console.log(chalk.gray("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"));
-    console.log(
-        chalk.hex("#ff00ff")("  » SYSTEM LOGIN WHATSAPP BOT BY KENZDEV")
-    );
-    console.log(chalk.hex("#00ffff")("  » https://api.kenz.my.id"));
-    console.log(
-        chalk.gray("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n")
-    );
+    console.log(gradient.instagram.multiline(banner));
+    console.log(chalk.gray("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"));
+    console.log(chalk.hex("#ff007f")("  ⚙  LOGIN SYSTEM WHATSAPP BOT BY KENZDEV"));
+    console.log(chalk.hex("#00ffff")("  🌐  https://kenzdeveloper-gacor.biz.id"));
+    console.log(chalk.gray("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"));
 }
 
 async function loginSystem() {
@@ -42,9 +34,7 @@ async function loginSystem() {
     if (fs.existsSync(userDbPath)) {
         const saved = JSON.parse(fs.readFileSync(userDbPath));
         console.log(
-            chalk.greenBright(
-                `\n[✓] Login otomatis sebagai ${chalk.bold(saved.username)}.\n`
-            )
+            chalk.greenBright(`\n[✓] Auto-login sebagai ${chalk.bold(saved.username)}\n`)
         );
         return true;
     }
@@ -54,45 +44,37 @@ async function loginSystem() {
         const res = await fetch(githubJsonUrl);
         githubData = await res.json();
     } catch {
-        console.log(
-            chalk.red.bold("\n[!] Gagal ambil data dari GitHub. Coba lagi.\n")
-        );
+        console.log(chalk.redBright("\n[!] Gagal ambil data login dari GitHub. Coba lagi nanti.\n"));
         process.exit();
     }
 
     const kodeUnik = generateUniqueCode();
-    console.log(
-        chalk.hex("#00ffff")(
-            `KODE UNIK LOGIN: ${chalk.bold.bgMagenta(` ${kodeUnik} `)}\n`
-        )
-    );
+    console.log(chalk.hex("#ff00ff")(`╔════════════════════════════════════════╗`));
+    console.log(chalk.hex("#ff00ff")(`║  KODE UNIK LOGIN: ${chalk.black.bgCyanBright(` ${kodeUnik} `)}          ║`));
+    console.log(chalk.hex("#ff00ff")(`╚════════════════════════════════════════╝\n`));
 
     let attempt = 0;
     while (attempt < 3) {
-        const username = await question(chalk.yellow("┏ Username: "));
-        const password = await question(chalk.yellow("┗ Password: "));
+        console.log(chalk.hex("#00ffff")("╔══════════════════════════════════════╗"));
+        const username = await question(chalk.cyan("║ Username : "));
+        const password = await question(chalk.cyan("║ Password : "));
+        console.log(chalk.hex("#00ffff")("╚══════════════════════════════════════╝"));
 
-        const loading = ora("Validasi data login...").start();
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        const spinner = ora("Validasi kredensial login...").start();
+        await new Promise(resolve => setTimeout(resolve, 1200));
 
-        if (
-            username === githubData.username &&
-            password === githubData.password
-        ) {
+        if (username === githubData.username && password === githubData.password) {
             fs.mkdirSync("database", { recursive: true });
-            fs.writeFileSync(
-                userDbPath,
-                JSON.stringify({ username, password }, null, 2)
-            );
-            loading.succeed("Login berhasil! Data disimpan.");
+            fs.writeFileSync(userDbPath, JSON.stringify({ username, password }, null, 2));
+            spinner.succeed(chalk.green("Login sukses! Selamat datang kembali."));
             return true;
         } else {
-            loading.fail("Username atau password salah.");
+            spinner.fail(chalk.red("Username atau password salah."));
             attempt++;
         }
     }
 
-    console.log(chalk.red.bold("\n[×] Login gagal 3 kali. Sistem keluar.\n"));
+    console.log(chalk.red.bold("\n[×] Gagal login 3 kali. Sistem keluar otomatis.\n"));
     process.exit();
 }
 
@@ -107,18 +89,12 @@ async function loginSystem() {
     });
 
     if (usePairingCode && !bot.user && !bot.authState.creds.registered) {
-        const jawaban = await question(
-            chalk.yellow("Gunakan Pairing Code? [Y/n]: ")
-        );
+        const jawaban = await question(chalk.cyanBright("Gunakan Pairing Code? [Y/n]: "));
         if (jawaban.toLowerCase() === "n") return start(false);
         if (jawaban.toLowerCase() === "y") {
-            const waNumber = await question(
-                chalk.yellow("Masukkan Nomor WhatsApp Anda: ")
-            );
-            const code = await bot.requestPairingCode(
-                waNumber.replace(/\D/g, "")
-            );
-            console.log(chalk.cyanBright(`\n» PAIRING CODE: ${code}\n`));
+            const waNumber = await question(chalk.cyan("Masukkan No WhatsApp Anda: "));
+            const code = await bot.requestPairingCode(waNumber.replace(/\D/g, ""));
+            console.log(chalk.magentaBright(`\n⚡ PAIRING CODE: ${chalk.bold(code)}\n`));
         }
     }
 
@@ -126,27 +102,23 @@ async function loginSystem() {
         if (connection === "close") {
             const { statusCode, error } = lastDisconnect.error.output.payload;
             if (statusCode === 401 && error === "Unauthorized") {
-                await fs.promises.rm("session", {
-                    recursive: true,
-                    force: true
-                });
+                await fs.promises.rm("session", { recursive: true, force: true });
             }
             return start();
         }
 
         if (connection === "open") {
-            console.log(
-                chalk.greenBright(
-                    `\n[✓] BOT TERHUBUNG: +${bot.user.id.split(":")[0]}\n`
-                )
-            );
-        }
+    const nomorBot = `+${bot.user.id.split(":")[0]}`;
+    console.log(chalk.greenBright("╔════════════════════════════════════════════════════╗"));
+    console.log(chalk.greenBright("║              BOT BERHASIL TERHUBUNG                ║"));
+    console.log(chalk.greenBright("╠════════════════════════════════════════════════════╣"));
+    console.log(chalk.greenBright(`║   Nomor BOT : ${chalk.bold(nomorBot)}${' '.repeat(38 - nomorBot.length)}║`));
+    console.log(chalk.greenBright("╚════════════════════════════════════════════════════╝\n"));
+}
 
         console.log(connection);
     });
 
     bot.ev.on("creds.update", sesi.saveCreds);
-    bot.ev.on("messages.upsert", ({ messages }) =>
-        messagesUpsert(bot, messages[0])
-    );
+    bot.ev.on("messages.upsert", ({ messages }) => messagesUpsert(bot, messages[0]));
 })();
